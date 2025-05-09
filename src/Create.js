@@ -10,7 +10,7 @@ const Create = () => {
   const handlesubmit = (e) => {
     e.preventDefault();
     const blog = { title, body, author };
-    fetch("http://localhost:8000/blogs", {
+    fetch(process.env.PUBLIC_URL + "/db.json", {
       method: "Post",
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(blog),

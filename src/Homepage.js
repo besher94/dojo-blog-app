@@ -1,7 +1,11 @@
 import BlogList from "./BlogList";
 import useFetch from "./useFetch";
 const Homepage = () => {
-  const { data: blogs, isPending, error } = useFetch("/db.json");
+  const {
+    data: blogs,
+    isPending,
+    error,
+  } = useFetch(process.env.PUBLIC_URL + "/db.json");
   return (
     <div className="home">
       {error && <div>{error}</div>}

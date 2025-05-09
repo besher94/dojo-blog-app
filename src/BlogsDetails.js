@@ -2,11 +2,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "./useFetch";
 const BlogsDetails = () => {
   const { id } = useParams();
-  const { data: blog, error, isPending } = useFetch("db.json" + id);
+  const {
+    data: blog,
+    error,
+    isPending,
+  } = useFetch(process.env.PUBLIC_URL + "/db.json" + id);
   const navigate = useNavigate();
 
   const handleClick = () => {
-    fetch("db.json" + blog.id, {
+    fetch(process.env.PUBLIC_URL + "/db.json" + blog.id, {
       method: "DELETE",
     }).then(() => {
       navigate("/");

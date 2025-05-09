@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-const useFetch = () => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isPending, setIspending] = useState(true);
   const [error, setError] = useState(null);
@@ -8,7 +8,7 @@ const useFetch = () => {
     const Abortcont = new AbortController();
 
     setTimeout(() => {
-      fetch(url, { signal: Abortcont.signal })
+      fetch(process.env.PUBLIC_URL + url, { signal: Abortcont.signal })
         .then((res) => {
           if (!res.ok) {
             throw Error("couldnt fetch the data");
